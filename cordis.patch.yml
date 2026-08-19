@@ -1,0 +1,7 @@
+# @javierni/balance-show — DeepSeek 余额卡片。
+# Host half registers /balance + /api/session-stats; the package also declares a
+# dsh.client web bundle that paints the bottom-right overlay card.
+- insert:
+    - id: balance-show
+      name: '@javierni/balance-show'
+	
