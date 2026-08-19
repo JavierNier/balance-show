@@ -1,6 +1,6 @@
 {
   "name": "@javierni/balance-show",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Balance & usage card plugin built on the DeepSeek Harness for its Web GUI (not affiliated with DeepSeek): account balance with color tiers, plus live per-conversation token usage and cost (peak/off-peak priced).",
   "repository": {
     "type": "git",

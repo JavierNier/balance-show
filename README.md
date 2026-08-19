@@ -73,11 +73,11 @@ minimumReleaseAgeExclude:
 插件**自动检查** npm 线上版本（启动时 + 每 12 小时），右下角卡片底部常驻显示：
 
 ```
-更新于 21:00:00        本地版本 v0.3.4  npm v0.3.4
+更新于 21:00:00        本地版本 v0.3.4  线上版本 v0.3.4
 ```
 
-- 版本一致时显示**灰色**；线上有新版时变**橙色**，且 `npm vX.Y.Z` 变为可点击。
-- 点击 `npm vX.Y.Z` 即通过本机 pnpm（PATH → corepack → npx 自动探测）执行
+- 版本一致时显示**灰色**；线上有新版时变**橙色**，且 `线上版本 vX.Y.Z` 变为可点击。
+- 点击 `线上版本 vX.Y.Z` 即通过本机 pnpm（PATH → corepack → npx 自动探测）执行
   `pnpm add @javierni/balance-show@latest` 完成更新，成功后提示重启 `dsh web`。
 - 更新需要本机可调用 pnpm 或 corepack（Windows 上 Node 自带 corepack，一般无需额外安装）。
 - **不会自动执行更新**——只检查并提示，更新始终由你手动点击触发。

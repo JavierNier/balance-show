@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.7 — 2026-08-16
+- 右下角版本标签文案 `npm` → `线上版本`（数值仍为 npm 线上最新版）
+
 ## 0.3.6 — 2026-08-16
 - 新增 `repository` 字段，npm 与 GitHub（JavierNier/balance-show）关联
 - 源码托管至 GitHub 公开仓库，带 `dsh-plugin` topic

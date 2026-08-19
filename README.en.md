@@ -81,12 +81,12 @@ The plugin **automatically checks** the npm registry (at startup and hourly);
 the card footer always shows:
 
 ```
-更新于 21:00:00        本地版本 v0.3.2  npm v0.3.2
+更新于 21:00:00        本地版本 v0.3.2  线上版本 v0.3.2
 ```
 
 - Grey when versions match; turns **orange** when an update exists, and the
-  `npm vX.Y.Z` becomes clickable.
-- Clicking `npm vX.Y.Z` runs `pnpm add @javierni/balance-show@latest` through a
+  `线上版本 vX.Y.Z` becomes clickable.
+- Clicking `线上版本 vX.Y.Z` runs `pnpm add @javierni/balance-show@latest` through a
   locally detected pnpm (PATH → corepack → npx), then prompts you to restart
   `dsh web`.
 - Updating requires pnpm or corepack on the machine (Node ships corepack on
