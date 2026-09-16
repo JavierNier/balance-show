@@ -30,6 +30,12 @@ peak/off-peak buckets).
 - **Balance card** (`shell.overlay` bottom-right): amount colored by tier
   (green ≥¥50, orange ¥10–50, red <¥10), availability chip, manual refresh,
   header arrow to collapse/expand (collapsed shows only the balance).
+- **Position memory & occlusion avoidance**: the card's position is remembered
+  per conversation (`balance-show-pos:<sessionId>`) and follows window/container
+  resizes proportionally, clamped inside the container. When a panel opens (e.g.
+  a right-hand sidebar), the card automatically hugs the panel's outer edge so it
+  is never hidden; the avoidance is display-only, so the card returns to its
+  remembered spot once the panel closes.
 - **Current conversation stats** (small text under the balance, live-updating):
   - Total tokens (replays the full log, covering pre-restart history)
   - Cache-hit status & rate (hover `?` explains what it means)
@@ -77,18 +83,22 @@ browser to see the card.
 
 ## Updates
 
-The plugin **automatically checks** the npm registry (at startup and hourly);
+The plugin **automatically checks** the npm registry (at startup and every 12 h);
 the card footer always shows:
 
 ```
-更新于 21:00:00        本地版本 v0.3.2  线上版本 v0.3.2
+更新于 21:00:00        本地版本 v0.3.9  线上版本 v0.3.9
 ```
 
 - Grey when versions match; turns **orange** when an update exists, and the
   `线上版本 vX.Y.Z` becomes clickable.
 - Clicking `线上版本 vX.Y.Z` runs `pnpm add @javierni/balance-show@latest` through a
-  locally detected pnpm (PATH → corepack → npx), then prompts you to restart
-  `dsh web`.
+  locally detected pnpm (PATH pnpm → local `dsh-pnpm-bin` → corepack → npx), then
+  prompts you to restart `dsh web`.
+- Since v0.3.9 the launcher probe **skips pnpm whose major version does not match
+  the profile's pnpm store** (read from `node_modules/.modules.yaml`), so the
+  update no longer fails with `ERR_PNPM_UNEXPECTED_STORE` when DSH Desktop puts a
+  bundled pnpm 10 on PATH while the store is v11.
 - Updating requires pnpm or corepack on the machine (Node ships corepack on
   Windows, usually nothing extra to install).
 - **It never auto-updates** — it only checks and notifies; updates are always

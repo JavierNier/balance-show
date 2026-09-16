@@ -27,6 +27,9 @@
 - **余额卡片**（`shell.overlay` 右下角浮窗）：余额字体按档位着色
   （≥¥50 绿、¥10–50 橙、<¥10 红）、可用状态、手动刷新、头部箭头可收起/展开
   （收起只显示余额）。
+- **位置记忆与遮挡避让**：卡片位置按对话独立记忆（`balance-show-pos:<会话id>`），
+  窗口/容器缩放时按最近边缘比例跟随并钳制在容器内；侧边栏等面板打开时，自动
+  **贴到面板边缘外侧**避免被盖住（避让只是显示位移、不改变记忆位置，面板关闭即回到原处）。
 - **当前对话统计**（余额下方小字，实时更新）：
   - 当前对话 Tokens（含回放完整历史，覆盖重启前消息）
   - 缓存命中状态与命中率（问号悬浮解释含义）
@@ -77,8 +80,12 @@ minimumReleaseAgeExclude:
 ```
 
 - 版本一致时显示**灰色**；线上有新版时变**橙色**，且 `线上版本 vX.Y.Z` 变为可点击。
-- 点击 `线上版本 vX.Y.Z` 即通过本机 pnpm（PATH → corepack → npx 自动探测）执行
-  `pnpm add @javierni/balance-show@latest` 完成更新，成功后提示重启 `dsh web`。
+- 点击 `线上版本 vX.Y.Z` 即通过本机 pnpm 执行 `pnpm add @javierni/balance-show@latest`
+  完成更新，成功后提示重启 `dsh web`。
+- pnpm 启动器按 **PATH pnpm → local `dsh-pnpm-bin` → corepack → npx** 顺序探测，
+  且会**跳过与 profile 的 pnpm store 大版本不匹配的 pnpm**（v0.3.9 起：先读
+  `node_modules/.modules.yaml` 的 store 版本再过滤启动器，避免 DSH Desktop 捆绑的
+  pnpm 10 读 pnpm 11 的 store 时报 `ERR_PNPM_UNEXPECTED_STORE`）。
 - 更新需要本机可调用 pnpm 或 corepack（Windows 上 Node 自带 corepack，一般无需额外安装）。
 - **不会自动执行更新**——只检查并提示，更新始终由你手动点击触发。
 - 各版本改动见 `CHANGELOG.md`。
